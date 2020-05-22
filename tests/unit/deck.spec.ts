@@ -57,4 +57,14 @@ describe('Deck', () => {
             _deck.cut()
         }).toThrow()
     })
+
+    it('can merge two decks and return a deck instance', () => {
+        const _deck2 = new Deck([5,6,7,8,9])
+        const mergedDeck = Deck.merge(_deck, _deck2)
+
+        expect(mergedDeck).toBeInstanceOf(Deck)
+        expect(mergedDeck.deck).toStrictEqual([1,2,3,4,5,5,6,7,8,9])
+        expect(_deck2.deck).toStrictEqual([5,6,7,8,9])
+        expect(_deck.deck).toStrictEqual([1,2,3,4,5])
+    })
 })
