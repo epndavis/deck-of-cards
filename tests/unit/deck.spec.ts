@@ -138,9 +138,10 @@ describe('Deck', () => {
     })
 
     it('can reset the deck to it\'s original set', () => {
-        _deck.shuffle().reset()
+        let deckReference = _deck.shuffle().reset()
 
         expect(_deck.deck).toStrictEqual(_array)
+        expect(deckReference).toBeInstanceOf(Deck)
 
         _deck.shuffle()
 

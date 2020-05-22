@@ -49,6 +49,7 @@ export default class Deck {
         ]
     }
 
+    // Reset the deck order to when the class was initialized
     reset(): Deck {
         this.deck = this.original.slice(0)
 
