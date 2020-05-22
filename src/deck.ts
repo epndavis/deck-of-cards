@@ -1,5 +1,5 @@
 // Deck Class
-class Deck {
+export default class Deck {
     deck: Array<any>
 
     constructor (_deck: Array<any>) {
