@@ -6,6 +6,20 @@ export default class Deck {
         this.deck = _deck
     }
 
+    // Shuffle the deck using the Durstenfeld solution to the Fisher–Yates shuffle
+    shuffle(): Deck {
+        const deckLength = this.deck.length
+
+        for (let i = deckLength - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+
+            // Use destructuring assignment to swap values
+            [this.deck[i], this.deck[j]] = [this.deck[j], this.deck[i]];
+        }
+
+        return this
+    }
+    
     // Draw a card from the deck and return it to the user, this simulates
     // a literal draw from the deck and so the card must be removed from 
     // the deck array
