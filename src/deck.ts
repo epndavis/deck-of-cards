@@ -30,6 +30,22 @@ export default class Deck {
 
         return this.deck.shift()
     }
+
+    // Cut the deck into two new deck classes
+    cut(): [Deck, Deck] {
+        const deckLength = this.deck.length
+
+        if (deckLength < 2) {
+            throw new Error ('There are not enough cards to be able to perform a cut')
+        }
+
+        const splitIndex = Math.ceil(deckLength / 2)
+
+        return [
+            new Deck(this.deck.slice(0, splitIndex)),
+            new Deck(this.deck.slice(splitIndex, deckLength))
+        ]
+    }
 }
 
 

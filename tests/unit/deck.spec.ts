@@ -37,4 +37,24 @@ describe('Deck', () => {
             _deck.draw()
         }).toThrow()
     })
+
+    it('can cut the deck into two new decks', () => {
+        const decks = _deck.cut();
+
+        expect(decks.length).toBe(2)
+        expect(decks[0]).toBeInstanceOf(Deck)
+        expect(decks[1]).toBeInstanceOf(Deck)
+    })
+
+    it('throws an error if the deck is not large enough to cut', () => {
+        const deckLength = _deck.deck.length
+        
+        for (let i = 0; i < deckLength - 1; i++) {
+            _deck.draw()
+        }
+
+        expect(() => {
+            _deck.cut()
+        }).toThrow()
+    })
 })
