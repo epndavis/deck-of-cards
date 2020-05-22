@@ -3,7 +3,7 @@ export default class Deck {
     deck: Array<any>
 
     constructor (_deck: Array<any>) {
-        this.deck = _deck
+        this.deck = _deck.slice(0)
     }
 
     // Shuffle the deck using the Durstenfeld solution to the Fisher–Yates shuffle
@@ -49,7 +49,7 @@ export default class Deck {
 
     // Merge two decks together, adds second deck to the end of the first deck
     static merge(firstDeck: Deck, secondDeck: Deck): Deck {
-        let mergeDeck = JSON.parse(JSON.stringify(firstDeck.deck))
+        let mergeDeck = firstDeck.deck.slice(0)
         Array.prototype.push.apply(mergeDeck, secondDeck.deck);
 
         return new Deck(mergeDeck);
