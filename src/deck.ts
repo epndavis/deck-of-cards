@@ -6,9 +6,39 @@ export default class Deck {
         this.deck = _deck
     }
 
+    // Shuffle the deck using the Durstenfeld solution to the Fisher–Yates shuffle
+    shuffle(): Deck {
+        const deckLength = this.deck.length
+
+        for (let i = deckLength - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+
+            // Use destructuring assignment to swap values
+            [this.deck[i], this.deck[j]] = [this.deck[j], this.deck[i]];
+        }
+
+        return this
+    }
+    
+    // Draw a card from the deck and return it to the user, this simulates
+    // a literal draw from the deck and so the card must be removed from 
+    // the deck array
+    draw(): any | Error {
+        if (this.deck.length == 0) {
+            throw new Error('No more cards in the deck!')
+        }
+
+        return this.deck.shift()
+    }
+
     // Cut the deck into two new deck classes
     cut(): [Deck, Deck] {
         const deckLength = this.deck.length
+
+        if (deckLength < 2) {
+            throw new Error ('There are not enough cards to be able to perform a cut')
+        }
+
         const splitIndex = Math.ceil(deckLength / 2)
 
         return [
