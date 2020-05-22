@@ -1,22 +1,22 @@
 // Deck Class
 export default class Deck {
     original: Array<any>
-    deck: Array<any>
+    cards: Array<any>
 
-    constructor (_deck: Array<any>) {
-        this.original = _deck.slice(0)
-        this.deck = _deck.slice(0)
+    constructor (_cards: Array<any>) {
+        this.original = _cards.slice(0)
+        this.cards = _cards.slice(0)
     }
 
     // Shuffle the deck using the Durstenfeld solution to the Fisher–Yates shuffle
     shuffle(): Deck {
-        const deckLength = this.deck.length
+        const deckLength = this.cards.length
 
         for (let i = deckLength - 1; i > 0; i--) {
             const j = Math.floor(Math.random() * (i + 1));
 
             // Use destructuring assignment to swap values
-            [this.deck[i], this.deck[j]] = [this.deck[j], this.deck[i]];
+            [this.cards[i], this.cards[j]] = [this.cards[j], this.cards[i]];
         }
 
         return this
@@ -26,16 +26,16 @@ export default class Deck {
     // a literal draw from the deck and so the card must be removed from 
     // the deck array
     draw(): any | Error {
-        if (this.deck.length == 0) {
+        if (this.cards.length == 0) {
             throw new Error('No more cards in the deck!')
         }
 
-        return this.deck.shift()
+        return this.cards.shift()
     }
 
     // Cut the deck into two new deck classes
     cut(): [Deck, Deck] {
-        const deckLength = this.deck.length
+        const deckLength = this.cards.length
 
         if (deckLength < 2) {
             throw new Error ('There are not enough cards to be able to perform a cut')
@@ -44,22 +44,22 @@ export default class Deck {
         const splitIndex = Math.ceil(deckLength / 2)
 
         return [
-            new Deck(this.deck.slice(0, splitIndex)),
-            new Deck(this.deck.slice(splitIndex, deckLength))
+            new Deck(this.cards.slice(0, splitIndex)),
+            new Deck(this.cards.slice(splitIndex, deckLength))
         ]
     }
 
     // Reset the deck order to when the class was initialized
     reset(): Deck {
-        this.deck = this.original.slice(0)
+        this.cards = this.original.slice(0)
 
         return this
     }
 
     // Merge two decks together, adds second deck to the end of the first deck
     static merge(firstDeck: Deck, secondDeck: Deck): Deck {
-        let mergeDeck = firstDeck.deck.slice(0)
-        Array.prototype.push.apply(mergeDeck, secondDeck.deck);
+        let mergeDeck = firstDeck.cards.slice(0)
+        Array.prototype.push.apply(mergeDeck, secondDeck.cards);
 
         return new Deck(mergeDeck);
     }
