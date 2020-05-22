@@ -2,7 +2,7 @@
   "name": "deck-of-cards",
   "version": "1.0.0",
   "description": "Package that simulates actions with a deck of cards",
-  "main": "index.js",
+  "main": "./dist/deck.js",
   "scripts": {
     "test": "jest",
     "watch": "tsc --watch"
