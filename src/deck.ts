@@ -1,8 +1,10 @@
 // Deck Class
 export default class Deck {
+    original: Array<any>
     deck: Array<any>
 
     constructor (_deck: Array<any>) {
+        this.original = _deck.slice(0)
         this.deck = _deck.slice(0)
     }
 
@@ -45,6 +47,12 @@ export default class Deck {
             new Deck(this.deck.slice(0, splitIndex)),
             new Deck(this.deck.slice(splitIndex, deckLength))
         ]
+    }
+
+    reset(): Deck {
+        this.deck = this.original.slice(0)
+
+        return this
     }
 
     // Merge two decks together, adds second deck to the end of the first deck
