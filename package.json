@@ -21,5 +21,8 @@
   "bugs": {
     "url": "https://github.com/epndavis/deck-of-cards/issues"
   },
-  "homepage": "https://github.com/epndavis/deck-of-cards#readme"
+  "homepage": "https://github.com/epndavis/deck-of-cards#readme",
+  "devDependencies": {
+    "typescript": "^3.9.3"
+  }
 }
