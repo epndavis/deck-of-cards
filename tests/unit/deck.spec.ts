@@ -136,4 +136,14 @@ describe('Deck', () => {
         expect(mergedDeck.deck.filter(arr => arr.id === 0)).toStrictEqual([{'id': 0}])
         expect(mergedDeck.deck.filter(arr => arr.id === 10)).toStrictEqual([{'id': 10}])
     })
+
+    it('can reset the deck to it\'s original set', () => {
+        _deck.shuffle().reset()
+
+        expect(_deck.deck).toStrictEqual(_array)
+
+        _deck.shuffle()
+
+        expect(_deck.original).toStrictEqual(_array)
+    })
 })
