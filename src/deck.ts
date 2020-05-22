@@ -46,6 +46,14 @@ export default class Deck {
             new Deck(this.deck.slice(splitIndex, deckLength))
         ]
     }
+
+    // Merge two decks together, adds second deck to the end of the first deck
+    static merge(firstDeck: Deck, secondDeck: Deck): Deck {
+        let mergeDeck = JSON.parse(JSON.stringify(firstDeck.deck))
+        Array.prototype.push.apply(mergeDeck, secondDeck.deck);
+
+        return new Deck(mergeDeck);
+    }
 }
 
 
