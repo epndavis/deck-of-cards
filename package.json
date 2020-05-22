@@ -1,0 +1,25 @@
+{
+  "name": "deck-of-cards",
+  "version": "1.0.0",
+  "description": "Package that simulates actions with a deck of cards",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/epndavis/deck-of-cards.git"
+  },
+  "keywords": [
+    "cards",
+    "typescript",
+    "deck",
+    "javascript"
+  ],
+  "author": "epndavis",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/epndavis/deck-of-cards/issues"
+  },
+  "homepage": "https://github.com/epndavis/deck-of-cards#readme"
+}
