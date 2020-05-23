@@ -74,6 +74,10 @@ export default class Deck {
             throw new Error ('Deal can only accept an integer')
         }
 
+        if (typeof cards !== 'number' && cards !== null) {
+            throw new Error ('Cards must be a number or null')
+        }
+
         let hands = []
 
         for (let j = 0; j < players; j++) {
