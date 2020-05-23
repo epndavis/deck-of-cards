@@ -166,4 +166,35 @@ describe('Deck', () => {
             { 'id': 6 },
         ])
     })
+
+    it('can deal cards to a specified number of players', () => {
+        const dealtHands = _deck.deal(4)
+
+        expect(dealtHands.length).toBe(4)
+
+        let cardCount = 0
+        const dealtHandsLength = dealtHands.length
+
+        for (let i = 0; i < dealtHandsLength; i++) {
+            expect(dealtHands[i]).toBeInstanceOf(Deck)
+
+            cardCount += dealtHands[i].count()
+        }
+
+        expect(cardCount).toBe(_array.length)
+    })
+
+    it('can deal specified number of cards to players', () => {
+        const dealtHands = _deck.deal(4, 1)
+
+        let cardCount = 0
+        const dealtHandsLength = dealtHands.length
+
+        for (let i = 0; i < dealtHandsLength; i++) {
+            cardCount += dealtHands[i].count()
+        }
+
+        expect(cardCount).toBe(4)
+        expect(_deck.count()).toBe(1)
+    })
 })
