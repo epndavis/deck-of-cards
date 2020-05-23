@@ -23,6 +23,10 @@ describe('Deck', () => {
     it('can access deck array', () => {
         expect(_deck.cards).toStrictEqual(_array)
     })
+    
+    it('can count number of cards in deck', () => {
+        expect(_deck.count()).toBe(5)
+    })
 
     it('can modify referenced object in original array', () => {
         _array[0].id = 0
@@ -35,18 +39,18 @@ describe('Deck', () => {
 
         expect(returnedInstance).toBeInstanceOf(Deck)
         expect(_deck.cards).not.toEqual(_array)
-        expect(_deck.cards.length).toBe(5)
+        expect(_deck.count()).toBe(5)
     })
     
     it('can draw a card from the deck and remove that card from the instance', () => {
         const card = _deck.draw()
 
         expect(card).toStrictEqual({'id': 1})
-        expect(_deck.cards.length).toBe(4)
+        expect(_deck.count()).toBe(4)
     })
 
     it('throws an error if no cards are left to draw', () => {
-        const deckLength = _deck.cards.length
+        const deckLength = _deck.count()
         
         for (let i = 0; i < deckLength; i++) {
             _deck.draw()
@@ -75,7 +79,7 @@ describe('Deck', () => {
     })
 
     it('throws an error if the deck is not large enough to cut', () => {
-        const deckLength = _deck.cards.length
+        const deckLength = _deck.count()
         
         for (let i = 0; i < deckLength - 1; i++) {
             _deck.draw()
@@ -84,10 +88,6 @@ describe('Deck', () => {
         expect(() => {
             _deck.cut()
         }).toThrow()
-    })
-
-    it('can count number of cards in deck', () => {
-        expect(_deck.count()).toBe(5)
     })
 
     it('can merge two decks and return a deck instance', () => {

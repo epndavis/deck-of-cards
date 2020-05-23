@@ -7,6 +7,11 @@ export default class Deck {
         this.original = _cards.slice(0)
         this.cards = _cards.slice(0)
     }
+    
+    // Return count of cards in deck
+    count(): number {
+        return this.cards.length
+    }
 
     // Shuffle the deck using the Durstenfeld solution to the Fisher–Yates shuffle
     shuffle(): Deck {
@@ -61,11 +66,6 @@ export default class Deck {
         this.cards = this.original.slice(0)
 
         return this
-    }
-
-    // Return count of cards in deck
-    count(): number {
-        return this.cards.length
     }
 
     // Merge two decks together, adds second deck to the end of the first deck
