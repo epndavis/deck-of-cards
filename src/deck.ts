@@ -33,6 +33,13 @@ export default class Deck {
         return this.cards.shift()
     }
 
+    // Add card to the deck
+    add(_card: any): Deck {
+        this.cards.push(_card)
+
+        return this
+    }
+
     // Cut the deck into two new deck classes
     cut(): [Deck, Deck] {
         const deckLength = this.cards.length

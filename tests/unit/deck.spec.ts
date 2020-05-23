@@ -147,4 +147,19 @@ describe('Deck', () => {
 
         expect(_deck.original).toStrictEqual(_array)
     })
+
+    it('can add card to hand', () => {
+        _deck.add({
+            "id": 6
+        })
+
+        expect(_deck.cards).toStrictEqual([
+            { 'id': 1 },
+            { 'id': 2 },
+            { 'id': 3 },
+            { 'id': 4 },
+            { 'id': 5 },
+            { 'id': 6 },
+        ])
+    })
 })
