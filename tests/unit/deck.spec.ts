@@ -86,6 +86,10 @@ describe('Deck', () => {
         }).toThrow()
     })
 
+    it('can count number of cards in deck', () => {
+        expect(_deck.count()).toBe(5)
+    })
+
     it('can merge two decks and return a deck instance', () => {
         let _array2 = [
             { 'id': 5 },
