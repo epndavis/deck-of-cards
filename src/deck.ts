@@ -68,6 +68,33 @@ export default class Deck {
         return this
     }
 
+    // Deal cards evenly between the number of players provided
+    deal(players: number, cards: number | null = null): Array<Deck> {
+        if (typeof players !== 'number') {
+            throw new Error ('Deal can only accept an integer')
+        }
+
+        let hands = []
+
+        for (let j = 0; j < players; j++) {
+            hands[j] = new Deck([])
+        }
+
+        const deckLength = cards ?? this.count()
+
+        for (let i = deckLength; i > 0; i--) {
+            for (let j = 0; j < players; j++) {
+                try {
+                    hands[j].add(this.draw())
+                } catch (err) {
+                    break;
+                }
+            }
+        }
+        
+        return hands
+    }
+
     // Merge two decks together, adds second deck to the end of the first deck
     static merge(firstDeck: Deck, secondDeck: Deck): Deck {
         let mergeDeck = firstDeck.cards.slice(0)
