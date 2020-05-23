@@ -7,10 +7,15 @@ export default class Deck {
         this.original = _cards.slice(0)
         this.cards = _cards.slice(0)
     }
+    
+    // Return count of cards in deck
+    count(): number {
+        return this.cards.length
+    }
 
     // Shuffle the deck using the Durstenfeld solution to the Fisher–Yates shuffle
     shuffle(): Deck {
-        const deckLength = this.cards.length
+        const deckLength = this.count()
 
         for (let i = deckLength - 1; i > 0; i--) {
             const j = Math.floor(Math.random() * (i + 1));
@@ -26,7 +31,7 @@ export default class Deck {
     // a literal draw from the deck and so the card must be removed from 
     // the deck array
     draw(): any | Error {
-        if (this.cards.length == 0) {
+        if (this.count() == 0) {
             throw new Error('No more cards in the deck!')
         }
 
@@ -42,7 +47,7 @@ export default class Deck {
 
     // Cut the deck into two new deck classes
     cut(): [Deck, Deck] {
-        const deckLength = this.cards.length
+        const deckLength = this.count()
 
         if (deckLength < 2) {
             throw new Error ('There are not enough cards to be able to perform a cut')
