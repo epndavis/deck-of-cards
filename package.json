@@ -5,14 +5,22 @@
   "main": "./dist/deck.js",
   "scripts": {
     "test": "jest",
-    "watch": "tsc --watch"
+    "prod": "npm run production",
+    "production": "webpack --config=webpack.common.js --mode=production",
+    "watch": "webpack --config=webpack.common.js --mode=development"
   },
   "jest": {
     "transform": {
       "^.+\\.tsx?$": "ts-jest"
     },
     "testRegex": "(/__tests__/.*|(\\.|/)(test|spec))\\.(jsx?|tsx?)$",
-    "moduleFileExtensions": ["ts", "tsx", "js", "jsx", "json"]
+    "moduleFileExtensions": [
+      "ts",
+      "tsx",
+      "js",
+      "jsx",
+      "json"
+    ]
   },
   "repository": {
     "type": "git",
@@ -34,6 +42,10 @@
     "@types/jest": "^25.2.3",
     "jest": "^26.0.1",
     "ts-jest": "^26.0.0",
-    "typescript": "^3.9.3"
+    "ts-loader": "^7.0.4",
+    "typescript": "^3.9.3",
+    "webpack": "^4.43.0",
+    "webpack-cli": "^3.3.11",
+    "webpack-dev-server": "^3.11.0"
   }
 }
